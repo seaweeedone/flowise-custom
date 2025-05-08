@@ -157,7 +157,7 @@ export class App {
         this.app.use(sanitizeMiddleware)
 
         // ==========|| custom code ||==========
-        const baseUrl = (process.env.FLoOWISE_BASE_URL ?? '').replace(/\/+$/, '');
+        const baseUrl = (process.env.FLOWISE_BASE_URL ?? '').replace(/\/+$/, '');
 
         const whitelistURLs = WHITELIST_URLS
         const URL_CASE_INSENSITIVE_REGEX: RegExp = /\/api\/v1\//i
