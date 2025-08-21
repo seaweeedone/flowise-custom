@@ -15,7 +15,6 @@ RUN apk add --no-cache chromium
 # Install curl for container-level health checks
 # Fixes: https://github.com/FlowiseAI/Flowise/issues/4126
 RUN apk add --no-cache curl
-RUN apk add --no-cache bash
 
 #install PNPM globaly
 RUN npm install -g pnpm
@@ -32,14 +31,8 @@ COPY . .
 
 RUN pnpm install
 
-#RUN pnpm build
-
-RUN ls -al 
-
-#COPY ./build-and-start.sh ./build-and-start.sh
-RUN chmod +x build-and-start.sh
+RUN pnpm build
 
 EXPOSE 3000
 
-#CMD [ "pnpm", "start" ]
-ENTRYPOINT ["bash", "./build-and-start.sh"]
+CMD [ "pnpm", "start" ]
